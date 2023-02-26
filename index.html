@@ -272,7 +272,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-26 17:19:36" itemprop="dateModified" datetime="2023-02-26T17:19:36+08:00">2023-02-26</time>
+      <time title="Modified: 2023-02-26 17:29:25" itemprop="dateModified" datetime="2023-02-26T17:29:25+08:00">2023-02-26</time>
     </span>
 
   
@@ -302,7 +302,7 @@
 <p>也是网上最主流的解决方法：在input组件中加一个强制刷新<code>@input=&quot;$forceUpdate()&quot;</code></p>
 <p>原理是：其实已经输入成功，只是视图层还没刷新。</p>
 <p>我试了一下不行，于是在浏览器中打印了表单，发现还是js部分设置的原始ruleform</p>
-<p><img src="/images/elementui%E4%B8%ADinput%E7%BB%84%E4%BB%B6%E4%B8%8D%E8%83%BD%E8%BE%93%E5%85%A5%E7%9A%84%E9%97%AE%E9%A2%98_img1" alt="ruleform"></p>
+<p><img src="/images/elementuiInputErr_img1.png" alt="ruleform"></p>
 <p>说明不是视图层没有刷新的问题</p>
 <ul>
 <li><h1 id="A2-没有设置v-model"><a href="#A2-没有设置v-model" class="headerlink" title="A2:没有设置v-model"></a><strong>A2:没有设置v-model</strong></h1></li>
@@ -313,7 +313,7 @@
 </ul>
 <p>是从这篇文章里找到的</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45883730/article/details/108779686">https://blog.csdn.net/weixin_45883730/article/details/108779686</a></p>
-<p>![截屏2023-01-31 22.54.08](/Users/gym/environment/hexo/source/images/截屏2023-01-31 22.54.08.png)</p>
+<p><img src="/images/elementuiInputErr_img2.png" alt="截屏2023-01-31 22.54.08"></p>
 <p>作者顺嘴提了一句，v-modle不要设置错了位置，检查一下竟是我本人。。感恩的心。。</p>
 <p>ps.这篇也是网上解决该问题方案比较全的文章，推荐阅读</p>
 <p>最后附正确代码</p>
@@ -372,9 +372,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-01-28 15:08:30 / Modified: 18:08:58" itemprop="dateCreated datePublished" datetime="2023-01-28T15:08:30+08:00">2023-01-28</time>
+      <time title="Created: 2023-01-28 15:08:30" itemprop="dateCreated datePublished" datetime="2023-01-28T15:08:30+08:00">2023-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-02-26 17:28:55" itemprop="dateModified" datetime="2023-02-26T17:28:55+08:00">2023-02-26</time>
     </span>
 
   
@@ -456,7 +462,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我是错误代码</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/file&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> data = req.<span class="property">body</span>.<span class="property">bitmap</span>.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">    fs.<span class="title function_">writeFile</span>(path, data, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">      <span class="comment">//第一个参数是文件写入的路径</span></span><br><span class="line">        <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;文件写入成功&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>data</code>打出来长这样：![截屏2023-01-28 17.46.01](/Users/gym/environment/hexo/source/images/截屏2023-01-28 17.46.01.png)明显是个数组。报错也说的很明白了，转成buffer对象就行</p>
+<p>其中<code>data</code>打出来长这样：<img src="/images/dataArr.png" alt="dataArr">明显是个数组。报错也说的很明白了，转成buffer对象就行</p>
 <p><code>var data = Buffer.from(req.body.bitmap.data)</code></p>
 <p>指定路径收到了前端发来的文件，大成功！</p>
 <ul>

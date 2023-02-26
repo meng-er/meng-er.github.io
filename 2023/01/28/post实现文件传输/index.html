@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="menger&#39;s blog">
 <meta property="og:description" content="版本说明 12% node -vv18.13.0  前端 版本说明  12% npm axios -v8.19.3   基本思路  生成buffer、获取文件名 将buffer对象和文件名发送至后端  附代码  12345678910111213141516const axios &#x3D; require(&amp;#x27;axios&amp;#x27;)const fs &#x3D; require(&amp;#x27;fs&amp;#x2">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/dataArr.png">
 <meta property="article:published_time" content="2023-01-28T07:08:30.000Z">
-<meta property="article:modified_time" content="2023-01-28T10:08:58.711Z">
+<meta property="article:modified_time" content="2023-02-26T09:28:55.776Z">
 <meta property="article:author" content="meng-er">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/dataArr.png">
 
 
 <link rel="canonical" href="http://example.com/2023/01/28/post%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/">
@@ -177,9 +179,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-01-28 15:08:30 / Modified: 18:08:58" itemprop="dateCreated datePublished" datetime="2023-01-28T15:08:30+08:00">2023-01-28</time>
+      <time title="Created: 2023-01-28 15:08:30" itemprop="dateCreated datePublished" datetime="2023-01-28T15:08:30+08:00">2023-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-02-26 17:28:55" itemprop="dateModified" datetime="2023-02-26T17:28:55+08:00">2023-02-26</time>
     </span>
 
   
@@ -261,7 +269,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我是错误代码</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/file&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> data = req.<span class="property">body</span>.<span class="property">bitmap</span>.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">    fs.<span class="title function_">writeFile</span>(path, data, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">      <span class="comment">//第一个参数是文件写入的路径</span></span><br><span class="line">        <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;文件写入成功&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>data</code>打出来长这样：![截屏2023-01-28 17.46.01](/Users/gym/environment/hexo/source/images/截屏2023-01-28 17.46.01.png)明显是个数组。报错也说的很明白了，转成buffer对象就行</p>
+<p>其中<code>data</code>打出来长这样：<img src="/images/dataArr.png" alt="dataArr">明显是个数组。报错也说的很明白了，转成buffer对象就行</p>
 <p><code>var data = Buffer.from(req.body.bitmap.data)</code></p>
 <p>指定路径收到了前端发来的文件，大成功！</p>
 <ul>
